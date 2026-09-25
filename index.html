@@ -1,341 +1,262 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrbanBike Hub</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                        'bike-primary': '#E76F51',
-                    }
-                }
-            }
-        }
-    </script>
-
-
-    <style>
-        .font-poppings {
-            font-family: 'Poppins', sans-serif;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UrbanBike Hub · Browse motorbikes</title>
+  <meta name="description" content="Browse a demo catalog of café racers, sport bikes, power cruisers and roadsters, and keep a cart on your own browser.">
+  <meta name="theme-color" content="#121417">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/home.js" defer></script>
 </head>
-
-<body class="font-poppings">
-    <header class="md:container md:mx-auto">
-        <nav>
-            <div class="navbar bg-base-100">
-                <div class="flex-1">
-                    <div class="dropdown">
-                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 6h16M4 12h8m-8 6h16" />
-                            </svg>
-                        </div>
-                        <ul tabindex="0"
-                            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-base">
-                            <li><a>Home </a></li>
-                            <li><a>Shop</a></li>
-                            <li><a>News</a></li>
-                            <li><a>Contact</a></li>
-                        </ul>
-                    </div>
-                    <a class="btn btn-ghost text-xl lg:text-4xl">UrbanBike Hub</a>
-                </div>
-                <div class="navbar-center hidden lg:flex">
-                    <ul class="menu menu-horizontal px-1 text-base">
-                        <li><a>Home </a></li>
-                        <li><a>Shop</a></li>
-                        <li><a>News</a></li>
-                        <li><a>Contact</a></li>
-                    </ul>
-                </div>
-                <div class="">
-                    <a class="btn btn-error text-white bg-'#E76F51'">LOGIN</a>
-                </div>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <aside class="demo-bar" aria-label="Demo notice">
+    <div class="container">
+      <p><strong>Demo site.</strong> The bikes, names and prices are illustrative, and nothing here is for sale. <a href="index.html#about-this-site">About this demo</a></p>
+    </div>
+  </aside>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><rect width="36" height="36" rx="9" fill="#16191d"/><path d="M10.5 9.5v9.25a7.5 7.5 0 0 0 15 0V9.5" fill="none" stroke="#e76f51" stroke-width="3.6" stroke-linecap="round"/><path d="M18 10.5v3M18 17v3" stroke="#f4f5f6" stroke-width="2.2" stroke-linecap="round"/></svg><span class="brand-name">UrbanBike <span>Hub</span></span></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html" data-nav="home">Home</a></li>
+          <li><a href="bikes.html" data-nav="bikes">Bikes</a></li>
+          <li><a href="index.html#faq" data-nav="faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <a class="cart-link" href="cart.html" data-nav="cart"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 4h2.2l2.3 10.4a1.6 1.6 0 0 0 1.6 1.3h8.1a1.6 1.6 0 0 0 1.5-1.1L21 8H6.3"/><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/></svg><span>Cart</span><span class="cart-count" data-cart-count aria-hidden="true">0</span><span class="visually-hidden" data-cart-count-text>, empty</span></a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <h1 class="visually-hidden">UrbanBike Hub: browse motorbikes</h1>
+    <section class="hero" data-carousel aria-roledescription="carousel" aria-label="Featured bikes">
+      <div class="hero-track" data-carousel-track aria-live="polite">
+        <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="1 of 4: Teal Café Racer" style="--glow: rgba(64, 166, 162, 0.32)">
+          <div class="container hero-inner">
+            <div class="hero-copy">
+              <p class="eyebrow hero-eyebrow"><span class="slide-no">01</span> Café racer</p>
+              <h2 class="hero-title">Teal paint, chrome pipes and a classic cowl</h2>
+              <p class="hero-text">A café racer with a small fairing around its round headlight, four chrome exhaust pipes and a black seat with a short tail.</p>
+              <p class="price-row hero-price js-only" data-price-for="teal-cafe-racer"></p>
+              <div class="hero-actions">
+                <a class="btn btn-primary btn-lg" href="bike.html?id=teal-cafe-racer">View this bike<span class="visually-hidden">: the Teal Café Racer</span></a>
+                <button class="btn btn-ghost-light btn-lg js-only" type="button" data-add-to-cart="teal-cafe-racer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><span class="btn-label">Add to cart</span><span class="visually-hidden"> the Teal Café Racer</span></button>
+              </div>
             </div>
-        </nav>
-
-        <div class="carousel w-full lg:h-[550px] bg-orange-200 bg-opacity-10">
-            <div id="slide1" class="carousel-item relative w-full">
-                <div class="flex flex-col lg:flex-row p-4 lg:p-24">
-                    <div class="space-y-7 flex-1">
-                        <h2 class="text-6xl font-bold">
-                            Ride-on R15 V4
-                            <br>
-                            with Smile
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis illo quidem soluta,
-                            at accusantium eligendi expedita, perferendis atque suscipit ab numquam qui repellat natus
-                            molestias rerum autem, laudantium laboriosam!</p>
-                        <button class="btn bg-bike-primary text-white">PURCHASE</button>
-                    </div>
-                    <div class="flex-1">
-                        <img src="images/slider/bike1.png" class="w-3/4" />
-                    </div>
-                </div>
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" class="btn btn-circle">❮</a>
-                    <a href="#slide2" class="btn btn-circle">❯</a>
-                </div>
-            </div>
-
-
-            <div id="slide2" class="carousel-item relative w-full">
-                <div class="flex flex-col lg:flex-row p-4 lg:p-24">
-                    <div class="space-y-7 flex-1">
-                        <h2 class="text-6xl font-bold">
-                            Ride-on R15 V4
-                            <br>
-                            with Smile
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis illo quidem soluta,
-                            at accusantium eligendi expedita, perferendis atque suscipit ab numquam qui repellat natus
-                            molestias rerum autem, laudantium laboriosam!</p>
-                        <button class="btn bg-bike-primary text-white">PURCHASE</button>
-                    </div>
-                    <div class="flex-1">
-                        <img src="images/slider/bike2.png" class="w-3/4" />
-                    </div>
-                </div>
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide1" class="btn btn-circle">❮</a>
-                    <a href="#slide3" class="btn btn-circle">❯</a>
-                </div>
-            </div>
-
-
-            <div id="slide3" class="carousel-item relative w-full">
-                <div class="flex flex-col lg:flex-row p-4 lg:p-24">
-                    <div class="space-y-7 flex-1">
-                        <h2 class="text-6xl font-bold">
-                            Ride-on R15 V4
-                            <br>
-                            with Smile
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis illo quidem soluta,
-                            at accusantium eligendi expedita, perferendis atque suscipit ab numquam qui repellat natus
-                            molestias rerum autem, laudantium laboriosam!</p>
-                        <button class="btn bg-bike-primary text-white">PURCHASE</button>
-                    </div>
-                    <div class="flex-1">
-                        <img src="images/slider/bike3.png" class="w-3/4" />
-                    </div>
-                </div>
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide2" class="btn btn-circle">❮</a>
-                    <a href="#slide4" class="btn btn-circle">❯</a>
-                </div>
-            </div>
-
-
-
-            <div id="slide4" class="carousel-item relative w-full">
-                <div class="flex flex-col lg:flex-row p-4 lg:p-24">
-                    <div class="space-y-7 flex-1">
-                        <h2 class="text-6xl font-bold">
-                            Ride-on R15 V4
-                            <br>
-                            with Smile
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis illo quidem soluta,
-                            at accusantium eligendi expedita, perferendis atque suscipit ab numquam qui repellat natus
-                            molestias rerum autem, laudantium laboriosam!</p>
-                        <button class="btn bg-bike-primary text-white">PURCHASE</button>
-                    </div>
-                    <div class="flex-1">
-                        <img src="images/slider/bike4.png" class="w-3/4" />
-                    </div>
-                </div>
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide3" class="btn btn-circle">❮</a>
-                    <a href="#slide1" class="btn btn-circle">❯</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <main class="md:container md:mx-auto">
-        <section>
-
-        </section>
-
-        <section class="my-24 mx-8">
-            <h3 class="text-5xl font-semibold text-center p-7">LATEST BIKES</h3>
-            <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5">
-                <div class="card bg-base-100 shadow-xl">
-                    <figure><img src="images/others/latest1.png" alt="Shoes" /></figure>
-                    <div class="card-body">
-                        <h2 class="card-title text-2xl">Ducati XDIAVEL S-73</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, sit!</p>
-                        <div class="card-action">
-                            <button class="btn bg-bike-primary text-white">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div>
-                    <div class="card bg-base-100 shadow-xl">
-                        <figure><img src="images/others/latest2.png" alt="Shoes" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title text-2xl">Ducati XDIAVEL S-73</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, sit!</p>
-                            <div class="card-action">
-                                <button class="btn bg-bike-primary text-white">Buy Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="card bg-base-100 shadow-xl">
-                        <figure><img src="images/others/latest3.png" alt="Shoes" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title text-2xl">Ducati XDIAVEL S-73</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, sit!</p>
-                            <div class="card-action">
-                                <button class="btn bg-bike-primary text-white">Buy Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="my-24 mx-10 ">
-            <h3 class="text-5xl font-semibold text-center p-7">HAPPY <span class="text-bike-primary">CLIENTS SAYS</span>
-            </h3>
-            <div class="grid grid col-span-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div class="card  bg-base-100 border border-grey-400 p-9">
-                    <figure><img class="w-36" src="images/others/user-1.png" alt="Shoes" /></figure>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, earum.</p>
-                        <div class="rating justify-center">
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                        </div>
-                        <div class="text-center space-y-4">
-                            <h4 class="text-sm font-semibold text-info">Regina Miles</h4>
-                            <p>Banker</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card  bg-base-100 border border-grey-400 p-9">
-                    <figure><img class="w-36" src="images/others/user-2.png" alt="Shoes" /></figure>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, earum.</p>
-                        <div class="rating justify-center">
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                        </div>
-                        <div class="text-center space-y-4">
-                            <h4 class="text-sm font-semibold text-info">Regina Miles</h4>
-                            <p>Banker</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card  bg-base-100 border border-grey-400 p-9">
-                    <figure><img class="w-36" src="images/others/user-3.png" alt="Shoes" /></figure>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, earum.</p>
-                        <div class="rating justify-center">
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
-                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                        </div>
-                        <div class="text-center space-y-4">
-                            <h4 class="text-sm font-semibold text-info">Regina Miles</h4>
-                            <p>Banker</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <section class="my-24 mx-10">
-            <h3 class="text-5xl font-semibold text-center p-7">FREQUENTLY ASKED <span
-                    class="text-bike-primary">QUESTIONS</span>
-            </h3>
-            <div class="hero min-h-screen">
-                <div class="hero-content flex-col lg:flex-row lg:gap-24">
-                    <img src="images/others/faq.png" class="w-3/4 max-w-sm rounded-lg " />
-                    <div class="my-5">
-                        <div class="collapse collapse-arrow border">
-                            <input type="radio" name="my-accordion-2" checked="checked" />
-                            <div class="collapse-title text-xl font-medium">
-                                What are the most important things I should
-                                know about riding a bike?
-                            </div>
-                            <div class="collapse-content">
-                                <p>Safety First! Always obey the rules of the road. Obey all traffic signals, signs, and
-                                    laws. Get in the mindset of “driving” your bike—not just “riding” your bike. This
-                                    will help you be a more focused and legally compliant bike rider. </p>
-                            </div>
-                        </div>
-                        <div class="collapse collapse-arrow border">
-                            <input type="radio" name="my-accordion-2" />
-                            <div class="collapse-title text-xl font-medium">
-                                How can I tell if my helmet is old and I need a
-                                new one?
-                            </div>
-                            <div class="collapse-content">
-                                <p>hello</p>
-                            </div>
-                        </div>
-                        <div class="collapse collapse-arrow border">
-                            <input type="radio" name="my-accordion-2" />
-                            <div class="collapse-title text-xl font-medium">
-                                My bike has been in storage is it safe to ride?
-                            </div>
-                            <div class="collapse-content">
-                                <p>hello</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-    <footer class="footer p-10 bg-neutral text-neutral-content">
-        <aside>
-          
-          <p>ACME Industries Ltd.<br/>Providing reliable tech since 1992</p>
-        </aside> 
-        <nav>
-          <header class="footer-title">Social</header> 
-          <div class="grid grid-cols-1 gap-4">
-            <a><img class="w-36" src="images/others/android.png" alt=""></a>
-            <a><img class="w-36" src="images/others/ios.png" alt=""></a>
-            
+            <div class="hero-media"><img src="assets/img/bikes/teal-cafe-racer.webp" width="399" height="343" alt="Teal café racer with a small fairing around its round headlight, four chrome exhaust pipes and a black seat, seen from the front left" fetchpriority="high" decoding="async"></div>
           </div>
+        </div>
+        <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 of 4: Red Café Racer" style="--glow: rgba(214, 70, 46, 0.32)">
+          <div class="container hero-inner">
+            <div class="hero-copy">
+              <p class="eyebrow hero-eyebrow"><span class="slide-no">02</span> Café racer</p>
+              <h2 class="hero-title">A red frame with nothing to hide</h2>
+              <p class="hero-text">This café racer shows off its red tubular frame, with a round headlight in a matching shell, a quilted dark seat and a wide front tyre.</p>
+              <p class="price-row hero-price js-only" data-price-for="red-cafe-racer"></p>
+              <div class="hero-actions">
+                <a class="btn btn-primary btn-lg" href="bike.html?id=red-cafe-racer">View this bike<span class="visually-hidden">: the Red Café Racer</span></a>
+                <button class="btn btn-ghost-light btn-lg js-only" type="button" data-add-to-cart="red-cafe-racer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><span class="btn-label">Add to cart</span><span class="visually-hidden"> the Red Café Racer</span></button>
+              </div>
+            </div>
+            <div class="hero-media"><img src="assets/img/bikes/red-cafe-racer.webp" width="322" height="336" alt="Café racer with an exposed red tubular frame, a round headlight in a red shell and a quilted dark seat, seen from the front left" decoding="async"></div>
+          </div>
+        </div>
+        <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 of 4: Orange Sport" style="--glow: rgba(242, 132, 42, 0.30)">
+          <div class="container hero-inner">
+            <div class="hero-copy">
+              <p class="eyebrow hero-eyebrow"><span class="slide-no">03</span> Sport</p>
+              <h2 class="hero-title">Full fairing, twin lights, bright orange</h2>
+              <p class="hero-text">A sport bike wrapped in orange bodywork, with twin headlights under a tinted windscreen and a seat that steps up for a passenger.</p>
+              <p class="price-row hero-price js-only" data-price-for="orange-sport"></p>
+              <div class="hero-actions">
+                <a class="btn btn-primary btn-lg" href="bike.html?id=orange-sport">View this bike<span class="visually-hidden">: the Orange Sport</span></a>
+                <button class="btn btn-ghost-light btn-lg js-only" type="button" data-add-to-cart="orange-sport"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><span class="btn-label">Add to cart</span><span class="visually-hidden"> the Orange Sport</span></button>
+              </div>
+            </div>
+            <div class="hero-media"><img src="assets/img/bikes/orange-sport.webp" width="417" height="330" alt="Orange sport bike with a full fairing, twin headlights, a tinted windscreen and a black split seat, seen from the front left" decoding="async"></div>
+          </div>
+        </div>
+        <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="4 of 4: Slate Roadster" style="--glow: rgba(88, 142, 186, 0.32)">
+          <div class="container hero-inner">
+            <div class="hero-copy">
+              <p class="eyebrow hero-eyebrow"><span class="slide-no">04</span> Roadster</p>
+              <h2 class="hero-title">An upright roadster in slate blue</h2>
+              <p class="hero-text">No fairing and wide handlebars, with finned silver panels along the side, a brown seat and a round headlight in a small cowl.</p>
+              <p class="price-row hero-price js-only" data-price-for="slate-roadster"></p>
+              <div class="hero-actions">
+                <a class="btn btn-primary btn-lg" href="bike.html?id=slate-roadster">View this bike<span class="visually-hidden">: the Slate Roadster</span></a>
+                <button class="btn btn-ghost-light btn-lg js-only" type="button" data-add-to-cart="slate-roadster"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><span class="btn-label">Add to cart</span><span class="visually-hidden"> the Slate Roadster</span></button>
+              </div>
+            </div>
+            <div class="hero-media"><img src="assets/img/bikes/slate-roadster.webp" width="369" height="344" alt="Slate-blue roadster with a round headlight, finned silver side panels, wide handlebars and a brown seat, seen from the front left" decoding="async"></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-controls" data-carousel-controls>
+        <div class="container">
+          <button class="hero-arrow hero-arrow-prev" type="button" data-carousel-prev aria-label="Previous bike"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <div class="hero-dots">
+            <button class="hero-dot" type="button" data-carousel-to="0" aria-current="true">01<span class="visually-hidden"> Teal Café Racer</span></button>
+            <button class="hero-dot" type="button" data-carousel-to="1" aria-current="false">02<span class="visually-hidden"> Red Café Racer</span></button>
+            <button class="hero-dot" type="button" data-carousel-to="2" aria-current="false">03<span class="visually-hidden"> Orange Sport</span></button>
+            <button class="hero-dot" type="button" data-carousel-to="3" aria-current="false">04<span class="visually-hidden"> Slate Roadster</span></button>
+          </div>
+          <button class="hero-arrow" type="button" data-carousel-next aria-label="Next bike"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="styles-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Find a style</p>
+            <h2 class="section-title" id="styles-title">Browse by style</h2>
+          </div>
+          <a class="text-link" href="bikes.html">See all <span data-bike-total>7</span> bikes<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="style-grid">
+        <a class="style-tile" href="bikes.html?style=cafe-racer">
+          <div class="style-media"><img class="" src="assets/img/bikes/red-cafe-racer.webp" width="322" height="336" alt="" loading="lazy" decoding="async"></div>
+          <div><h3 class="style-name">Café racer</h3><p class="style-blurb">Stripped-back bikes with a round headlight and a short seat, a look that goes back to 1960s Britain.</p></div>
+          <p class="style-foot"><span data-style-count="cafe-racer">2 bikes</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
+        </a>
+        <a class="style-tile" href="bikes.html?style=sport">
+          <div class="style-media"><img class="" src="assets/img/bikes/white-blue-sport.webp" width="288" height="243" alt="" loading="lazy" decoding="async"></div>
+          <div><h3 class="style-name">Sport</h3><p class="style-blurb">Fully faired bikes with a forward, tucked-in riding position.</p></div>
+          <p class="style-foot"><span data-style-count="sport">2 bikes</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
+        </a>
+        <a class="style-tile" href="bikes.html?style=power-cruiser">
+          <div class="style-media"><img class="is-photo" src="assets/img/bikes/graphite-power-cruiser.webp" width="327" height="246" alt="" loading="lazy" decoding="async"></div>
+          <div><h3 class="style-name">Power cruiser</h3><p class="style-blurb">Long, low cruisers with a muscular stance and a wide rear tyre.</p></div>
+          <p class="style-foot"><span data-style-count="power-cruiser">2 bikes</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
+        </a>
+        <a class="style-tile" href="bikes.html?style=roadster">
+          <div class="style-media"><img class="" src="assets/img/bikes/slate-roadster.webp" width="369" height="344" alt="" loading="lazy" decoding="async"></div>
+          <div><h3 class="style-name">Roadster</h3><p class="style-blurb">Naked bikes with no fairing and wide, upright handlebars.</p></div>
+          <p class="style-foot"><span data-style-count="roadster">1 bike</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
+        </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="more-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Also in the catalog</p>
+            <h2 class="section-title" id="more-title">More bikes to browse</h2>
+          </div>
+          <a class="text-link" href="bikes.html">Open the catalog<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="bike-grid" id="more-bikes"></div>
+        <noscript><p class="noscript">Turn on JavaScript to browse the catalog and use the cart.</p></noscript>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">How it works</p>
+            <h2 class="section-title" id="how-title">Browse now, pick up where you left off</h2>
+            <p class="section-intro">There are no accounts and nothing to sign up for. The only thing this site saves is your cart, and it saves it on your own browser.</p>
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step"><span class="step-no" aria-hidden="true">1</span><h3>Browse the catalog</h3><p>Search by name or colour, or filter by style. Open any bike to see a larger photo and what it shows.</p></li>
+          <li class="step"><span class="step-no" aria-hidden="true">2</span><h3>Add bikes to your cart</h3><p>Pick a quantity, up to five of each bike. Adding a bike doesn't order it or reserve it.</p></li>
+          <li class="step"><span class="step-no" aria-hidden="true">3</span><h3>Come back to it later</h3><p>Your cart is kept in this browser's local storage, so it's still there after you close the page. It isn't sent anywhere.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Questions</p>
+            <h2 class="section-title" id="faq-title">Frequently asked questions</h2>
+          </div>
+        </div>
+        <div class="faq-groups">
+          <div class="faq-group" id="about-this-site">
+            <h3>About this site</h3>
+          <details class="faq-item" open>
+            <summary>Is UrbanBike Hub a real shop?</summary>
+            <div class="faq-answer"><p>No. It's a demo website for browsing motorbikes. The bike names, descriptions and prices are illustrative, and nothing here can be bought or reserved.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Where is my cart saved?</summary>
+            <div class="faq-answer"><p>Only in this browser, in its local storage. It isn't sent to a server, so it won't show up on another browser or device, and clearing this site's data empties it.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Can I check out or pay?</summary>
+            <div class="faq-answer"><p>No. There's no checkout and no payment system. Use the cart to keep track of the bikes you like.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why aren't there any specifications?</summary>
+            <div class="faq-answer"><p>Each bike is described only from what its photo shows. This demo has no verified specifications, so it doesn't list any.</p></div>
+          </details>
+          </div>
+          <div class="faq-group">
+            <h3>Riding basics</h3>
+          <details class="faq-item">
+            <summary>What should I know before riding a motorbike?</summary>
+            <div class="faq-answer"><p>Get proper training and the licence your country requires. Wear a helmet that fits and meets your local safety standard, along with gloves, boots and protective clothing.</p><p>Before each ride, check the tyres, brakes, lights and controls. On the road, ride as if other drivers haven't seen you: keep a safe distance, stay out of blind spots and follow the traffic laws.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How can I tell if my helmet needs replacing?</summary>
+            <div class="faq-answer"><p>Replace it after any crash or hard knock, even if it looks fine, because the foam liner inside is designed to absorb a single impact. Also replace it if the shell is cracked, the liner is crumbling or dented, it no longer fits snugly, or the strap or buckle is worn.</p><p>Many helmet makers suggest replacing a helmet about every five years even without damage. Check the advice in your helmet's manual.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>My bike has been in storage. Is it safe to ride?</summary>
+            <div class="faq-answer"><p>Check it over first. Look at the tyres for the right pressure, cracks or flat spots, charge or test the battery, check the oil, brake fluid and coolant, and make sure the chain or belt is lubricated and correctly adjusted. Then test the brakes, lights and horn.</p><p>Fuel left in the tank for months can go stale. If anything looks wrong, or you're not sure, have a qualified mechanic check the bike before you ride it.</p></div>
+          </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><rect width="36" height="36" rx="9" fill="#16191d"/><path d="M10.5 9.5v9.25a7.5 7.5 0 0 0 15 0V9.5" fill="none" stroke="#e76f51" stroke-width="3.6" stroke-linecap="round"/><path d="M18 10.5v3M18 17v3" stroke="#f4f5f6" stroke-width="2.2" stroke-linecap="round"/></svg><span class="brand-name">UrbanBike <span>Hub</span></span></a>
+          <p>A demo website for browsing motorbikes. It doesn't sell bikes or take orders, and your cart stays on your own browser.</p>
+        </div>
+        <nav aria-labelledby="footer-browse">
+          <h2 class="footer-title" id="footer-browse">Browse</h2>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="bikes.html">All bikes</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
         </nav>
-      </footer>
-
+        <div>
+          <h2 class="footer-title">Project</h2>
+          <ul class="footer-links">
+            <li><a href="https://github.com/SHAYAN-ABRAR/UrbanBike-Hub">Source code on GitHub</a></li>
+            <li><a href="https://github.com/SHAYAN-ABRAR">Built by Shayan Abrar</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <p>The bike names, descriptions and prices are demo content. The motorcycle photos came with the original version of this project, and their sources aren't recorded.</p>
+        <p>Typefaces: Barlow and Barlow Condensed, under the SIL Open Font License.</p>
+      </div>
+    </div>
+  </footer>
 </body>
-
 </html>
