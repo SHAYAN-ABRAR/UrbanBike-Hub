@@ -1,25 +1,25 @@
 # UrbanBike Hub
 
-A motorbike showroom landing page built with Tailwind CSS and DaisyUI: a bike carousel, the latest models, customer reviews and a rider FAQ.
+A static website for browsing motorbikes. It has a featured-bike carousel, a catalog with search, style filters and sorting, a page for each bike, and a cart that's saved in your browser. It's a demo: the bike names, descriptions and prices are illustrative, and nothing on the site is for sale.
 
 **Live site:** <https://shayan-abrar.github.io/UrbanBike-Hub/>
 
 <p align="center">
-  <img src="screenshots/tour.gif" width="800" alt="Animated tour through the bike carousel, the Latest Bikes cards, the client reviews and the FAQ accordion">
+  <img src="screenshots/home.jpg" width="800" alt="Home page: a dark hero with a teal café racer under a soft spotlight, the headline Teal paint, chrome pipes and a classic cowl, a demo price, View this bike and Add to cart buttons, and carousel controls numbered 01 to 04">
 </p>
 
 <table>
   <tr>
-    <td align="center" width="25%"><a href="screenshots/preview.png"><img src="screenshots/preview.png" width="190" alt="Navigation bar and hero carousel slide with the headline Ride-on R15 V4 with Smile, a Purchase button, a motorbike photo and arrow buttons"></a><br><sub><b>Hero</b> · carousel</sub></td>
-    <td align="center" width="25%"><a href="screenshots/latest-bikes.jpg"><img src="screenshots/latest-bikes.jpg" width="190" alt="Latest Bikes section with three bike cards, each with a photo, a name and a Buy Now button"></a><br><sub><b>Latest bikes</b></sub></td>
-    <td align="center" width="25%"><a href="screenshots/clients.jpg"><img src="screenshots/clients.jpg" width="190" alt="Happy Clients Says section with three review cards showing a photo, a quote, star ratings, a name and a job title"></a><br><sub><b>Reviews</b> · star ratings</sub></td>
-    <td align="center" width="25%"><a href="screenshots/faq.jpg"><img src="screenshots/faq.jpg" width="190" alt="Frequently Asked Questions section with a question mark illustration and an accordion with the first answer open"></a><br><sub><b>FAQ</b> · accordion</sub></td>
+    <td align="center" width="25%"><a href="screenshots/catalog.jpg"><img src="screenshots/catalog.jpg" width="190" alt="Catalog page with a search box, a sort menu, style filter chips with counts and a grid of bike cards"></a><br><sub><b>Catalog</b> · search, filter, sort</sub></td>
+    <td align="center" width="25%"><a href="screenshots/bike.jpg"><img src="screenshots/bike.jpg" width="190" alt="Details page for the Red Café Racer with a large photo, a demo price, a list of what's in the photo, a quantity menu and an Add to cart button"></a><br><sub><b>Bike details</b></sub></td>
+    <td align="center" width="25%"><a href="screenshots/cart.jpg"><img src="screenshots/cart.jpg" width="190" alt="Cart page listing three bikes with quantity steppers, remove buttons and line totals, next to a summary with a demo total and a note that there's no checkout"></a><br><sub><b>Cart</b> · saved in the browser</sub></td>
+    <td align="center" width="25%"><a href="screenshots/mobile.jpg"><img src="screenshots/mobile.jpg" width="190" alt="Three phone screens: the home carousel, the Orange Sport details page and the cart"></a><br><sub><b>Phone</b> layouts</sub></td>
   </tr>
 </table>
 
-A showroom's home page has to show its bikes first and then answer the questions buyers ask. This page does that with DaisyUI components (a carousel, cards, star ratings and an accordion) arranged with Tailwind utilities. Apart from a short Tailwind config, it has no JavaScript of its own, which makes it a compact reference for building a landing page from ready-made components.
+## Quick start
 
-## Quick Start
+There's no build step and nothing to install. Serve the folder with any static web server:
 
 ```bash
 git clone https://github.com/SHAYAN-ABRAR/UrbanBike-Hub.git
@@ -27,52 +27,96 @@ cd UrbanBike-Hub
 python3 -m http.server 8000
 ```
 
-Open <http://localhost:8000>. On Windows, use `python` instead of `python3`. Opening `index.html` directly in a browser works too. Tailwind CSS, DaisyUI and the Poppins font load from the internet.
+Open <http://localhost:8000>. On Windows, use `python` instead of `python3`.
 
-## Features
+To preview it under the same `/UrbanBike-Hub/` path that GitHub Pages uses, run the server from the folder that contains the project instead:
 
-- **Hero carousel:** four slides with different bike photos, a **Purchase** button and ❮ ❯ arrows. The arrows are anchor links to the next and previous slides, so no script is needed.
-- **Navigation:** Home, Shop, News and Contact links and a **Login** button. Below 1,024px, the links move into a dropdown menu.
-- **Latest Bikes:** three cards with a photo, a name and a **Buy Now** button, in one, two or three columns depending on the screen width.
-- **Client reviews:** three cards with a photo, a quote, a DaisyUI star rating, a name and a job title.
-- **FAQ:** three rider questions in a DaisyUI accordion that keeps one answer open at a time, next to an illustration.
-- **Footer:** a company blurb and Google Play and App Store badges.
-
-## Customizing the Brand Color
-
-The orange accent is a custom color added to Tailwind's theme in an inline config in `index.html`:
-
-```html
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    clifford: '#da373d',
-                    'bike-primary': '#E76F51',
-                }
-            }
-        }
-    }
-</script>
+```bash
+cd ..
+python3 -m http.server 8000
 ```
 
-Classes such as `bg-bike-primary` and `text-bike-primary` come from this entry, so changing the hex value recolors the **Purchase** and **Buy Now** buttons and the orange words in the headings. `clifford` is the example color from Tailwind's documentation and isn't used on the page.
+Then open <http://localhost:8000/UrbanBike-Hub/>. Python's server shows its own error page for missing paths. The custom `404.html` page only appears on GitHub Pages.
+
+Use a local server rather than opening `index.html` directly. Browsers block the site's web fonts on `file://` pages, and some browsers don't keep `localStorage` for them, so the cart may not carry over between pages.
+
+## Pages
+
+- **Home (`index.html`):** a carousel of four featured bikes, each with its own headline, description and demo price. Swipe it on a touchscreen, or use the arrow buttons, the 01 to 04 buttons or the arrow keys. It never moves on its own. Below it: browse by style, the other three bikes, how the cart works and a FAQ.
+- **Catalog (`bikes.html`):** all seven bikes. Search by name, style or colour (accents are ignored, so "cafe" finds "Café"), filter by one of four styles, and sort by featured order, demo price or name. The current search, style and sort are kept in the address, for example `bikes.html?style=sport&q=blue&sort=price-asc`, so a filtered view can be bookmarked or shared.
+- **Bike details (`bike.html?id=…`):** a larger photo, a description of what the photo shows, a quantity menu (1 to 5) with **Add to cart**, and other bikes to look at. An unknown or missing id shows a "We couldn't find that bike" page with links back to the catalog.
+- **Cart (`cart.html`):** see below.
+- **Not found (`404.html`):** GitHub Pages shows this page for any path that doesn't exist.
+
+## How the cart works
+
+- The cart is saved in the browser's `localStorage` under the key `urbanbikehub:cart:v1`, in the form `{"v":1,"items":[{"id":"orange-sport","qty":2}],"savedAt":"…"}`. It's the only thing the site stores. Nothing is sent anywhere: there's no server, no account and no cookies.
+- It's still there after a refresh or after closing and reopening the browser, on the same browser and device. Other browsers and devices have their own carts, a private window may not keep it, and clearing the site's data empties it.
+- You can add up to 5 of each bike, change quantities, remove a bike (with **Undo**) and empty the whole cart (it asks first, and also offers **Undo**). The header shows how many bikes are in the cart, and other open tabs of the site update to match.
+- The cart shows line totals and a demo total. Adding a bike doesn't order or reserve it. There's no checkout and no payment of any kind.
+- Saved data is checked every time it's read. If it can't be read or comes from an older format, the cart is reset. Bikes that are no longer in the catalog are removed, entries with invalid quantities are removed, and quantities over 5 are lowered to 5. The cart page explains what changed, and the cleaned-up cart is saved so the message only appears once.
+- If the browser blocks storage, the cart still works while the page is open, and the site says it won't be kept.
+
+## What's demo content
+
+- **Bike names** describe each photo by colour and style ("Teal Café Racer", "Black Power Cruiser"). They aren't make and model names.
+- **Descriptions** only describe what's visible in each photo.
+- **Prices** are made-up demo values in Bangladeshi taka (৳). The site labels them "Demo price" everywhere they appear.
+- **No specifications, stock levels, reviews or ratings** are shown, because none of them are verified.
+- The FAQ's "Riding basics" answers are general safety advice, not advice about particular bikes.
+
+## Project structure
+
+```text
+index.html               Home: carousel, styles, more bikes, how it works, FAQ
+bikes.html               Catalog
+bike.html                Bike details (bike.html?id=…)
+cart.html                Cart
+404.html                 Not-found page for GitHub Pages (uses /UrbanBike-Hub/ paths)
+assets/css/site.css      All styles
+assets/js/data.js        The catalog: styles and bikes (names, demo prices, photos, alt text)
+assets/js/cart.js        Reading, checking and saving the cart
+assets/js/ui.js          Shared parts: bike cards, prices, header count, messages
+assets/js/home.js        Home page and carousel
+assets/js/catalog.js     Search, filters and sorting
+assets/js/detail.js      Bike details page
+assets/js/cart-page.js   Cart page
+assets/img/bikes/        Bike photos (WebP)
+assets/fonts/            Barlow and Barlow Condensed (WOFF2) with their licenses
+screenshots/             Images used in this README
+```
+
+To change the catalog, edit `assets/js/data.js`. Each bike's `id` is used in its page address and in saved carts, so if you rename or remove an id, carts that contain it drop that bike with a notice.
+
+## Accessibility
+
+- Every control works with a keyboard and shows a visible focus outline. A "Skip to main content" link comes first on every page.
+- The carousel only moves when asked. Slides that aren't showing are hidden from keyboard and screen-reader users, and the numbered buttons say which slide is current.
+- Photos have descriptive alt text. Cart changes and "added" messages are announced to screen readers.
+- Animations are turned off when the system is set to reduce motion.
+- Without JavaScript, the home page still shows the four featured bikes, and the catalog, details and cart pages say they need JavaScript.
+
+## Deploying
+
+The site is plain HTML, CSS and JavaScript with relative links, so GitHub Pages can serve the repository as it is. The one exception is `404.html`: GitHub Pages serves it for missing paths at any depth, so its links start with `/UrbanBike-Hub/`. If the site moves to another path or a custom domain, update those links.
 
 ## Limitations
 
-- Much of the content is placeholder text: every slide has the same headline, all three bikes are named "Ducati XDIAVEL S-73", all three reviews are from "Regina Miles, Banker", two FAQ answers just say "hello", and the footer reads "ACME Industries Ltd."
-- All three star ratings share one radio group, so only the last card keeps its four-star rating. The first two show five stars, and clicking a star in one card clears the others.
-- The buttons and navigation links don't lead anywhere. **Login** is DaisyUI's red `btn-error` color because its brand-color class (`bg-'#E76F51'`) isn't a valid Tailwind class.
-- The FAQ block is a full-screen-height hero, which leaves a large empty gap above the questions. Most images have the alt text "Shoes" or none, and a few images in `images/` aren't used.
+- It's a browsing demo, so there's no checkout, payment, stock or account system.
+- The cart lives in one browser. It isn't synced between browsers or devices.
+- The catalog is limited to the seven bike photos in the project.
+- The catalog, details and cart pages need JavaScript.
 
-## Tech Stack
+## Tech stack
 
-- HTML5
-- Tailwind CSS (Play CDN) with an inline config for the brand color
-- DaisyUI 4.6.0: navbar, dropdown, carousel, card, rating, collapse and footer components
-- Google Fonts: Poppins
+- HTML, CSS and JavaScript, with no framework, dependencies or build step
+- Barlow and Barlow Condensed typefaces, self-hosted
 - Hosted on GitHub Pages
+
+## Credits
+
+- **Typefaces:** Barlow and Barlow Condensed, Copyright 2017 The Barlow Project Authors, under the SIL Open Font License 1.1. The license files are in `assets/fonts/`.
+- **Photos:** the motorcycle photos came with the original version of this project, and their sources aren't recorded.
 
 ## Contributing
 
